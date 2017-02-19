@@ -4,6 +4,8 @@ var app = express();
 //a time utility
 var moment = require('moment');
 
+app.set('port', (process.env.PORT || 5000));
+
 app.get('/:string', function(req, res){
 
   var date = moment(req.params.string);
@@ -17,6 +19,6 @@ app.get('/:string', function(req, res){
 
 });
 
-app.listen(3000, function(){
-  console.log('Example app running on port 3000');
+app.listen(app.get('port'), function(){
+  console.log('Example app running on port '+app.get('port'));
 });
